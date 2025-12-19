@@ -55,7 +55,7 @@ print(response.usage)
 # Output: input_tokens=10 output_tokens=5 total_tokens=15
 ```
 
-## Structured Output (v0.2)
+## Structured Output
 Generate validated JSON objects directly using Pydantic models. Works across all providers.
 
 ```python
@@ -73,7 +73,7 @@ print(f"Name: {user.name}, Age: {user.age}")
 # Output: Name: Alice, Age: 30
 ```
 
-## Conversation History (v0.2)
+## Conversation History
 Manage multi-turn conversations using typed Message objects.
 
 ```python
@@ -88,6 +88,22 @@ messages = [
 
 response = client.chat("claude-3-opus").generate(messages)
 print(response.text)
+```
+
+## Middleware (Interceptor Pipeline)
+Inject custom logic before requests or after responses. Useful for logging, cost tracking, or prompt engineering.
+
+### Cost Tracking Example
+```python
+from aiclient.middleware import CostTrackingMiddleware
+
+tracker = CostTrackingMiddleware()
+
+client = Client()
+client.add_middleware(tracker)
+
+client.chat("gpt-4").generate("Hello")
+print(f"Total Tokens: {tracker.total_input_tokens} in, {tracker.total_output_tokens} out")
 ```
 
 ## Tools & Agents
