@@ -55,6 +55,41 @@ print(response.usage)
 # Output: input_tokens=10 output_tokens=5 total_tokens=15
 ```
 
+## Structured Output (v0.2)
+Generate validated JSON objects directly using Pydantic models. Works across all providers.
+
+```python
+from pydantic import BaseModel
+from aiclient import Client
+
+class User(BaseModel):
+    name: str
+    age: int
+
+client = Client()
+user = client.chat("gpt-4").generate("Who is Alice?", response_model=User)
+
+print(f"Name: {user.name}, Age: {user.age}")
+# Output: Name: Alice, Age: 30
+```
+
+## Conversation History (v0.2)
+Manage multi-turn conversations using typed Message objects.
+
+```python
+from aiclient.types import SystemMessage, UserMessage, AssistantMessage
+
+messages = [
+    SystemMessage(content="You are a helpful assistant."),
+    UserMessage(content="Hello"),
+    AssistantMessage(content="Hi there!"),
+    UserMessage(content="What is your name?")
+]
+
+response = client.chat("claude-3-opus").generate(messages)
+print(response.text)
+```
+
 ## Tools & Agents
 
 ```python
