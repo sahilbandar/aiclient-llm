@@ -1,6 +1,6 @@
 # aiclient
 
-[![PyPI version](https://badge.fury.io/py/aiclient.svg)](https://badge.fury.io/py/aiclient)
+[![PyPI version](https://badge.fury.io/py/aiclient-llm.svg)](https://badge.fury.io/py/aiclient-llm)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **A minimal, unified, and resilient Python client for modern LLMs.**
@@ -20,7 +20,7 @@ Supports **OpenAI**, **Anthropic** (Claude 3), **Google** (Gemini), and **xAI** 
 ## Installation
 
 ```bash
-pip install aiclient
+pip install aiclient-llm
 ```
 
 *(Note: Not yet on PyPI, install from source/git)*
