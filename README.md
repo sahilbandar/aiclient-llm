@@ -1,20 +1,24 @@
 # aiclient-llm
 
 [![PyPI version](https://badge.fury.io/py/aiclient-llm.svg)](https://badge.fury.io/py/aiclient-llm)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 **A minimal, unified, and resilient Python client for modern LLMs.**
 
 Supports **OpenAI**, **Anthropic** (Claude 3), **Google** (Gemini), and **xAI** (Grok) with a single, consistent interface.
 
-## Features
+## Documentation
 
-- 🦄 **Unified Interface**: Swap between providers without changing code.
+- [**Getting Started**](docs/getting_started.md): Installation, Configuration, Basic Usage.
+- [**Features Guide**](docs/features.md): Agents, Multimodal, Local LLMs (Ollama), Structured Output.
+- [**Middleware**](docs/middleware.md): Cost tracking, logging, and custom middleware.
+
+## Key Features
+
+- 🦄 **Unified Interface**: Swap between OpenAI, Anthropic, Google, xAI, and Ollama seamlessly.
 - ⚡ **Async & Sync**: Native asyncio support for high-performance apps.
-- 👁️ **Multimodal**: Send images and text seamlessly.
-- 🛡️ **Resilient**: Automatic retries with exponential backoff for 429/5xx errors.
+- 🛡️ **Resilient**: Automatic retries with exponential backoff.
 - 🤖 **Agent Primitives**: Built-in ReAct loop for tool-using agents.
-- 🛠️ **Tool Calling**: Standardized function calling across providers.
 - 📊 **Middleware**: Inspect requests, track costs, or log data.
 
 ## Installation
@@ -107,4 +111,4 @@ client = Client(max_retries=3, retry_delay=1.0)
 
 ## License
 
-MIT
+Apache-2.0
