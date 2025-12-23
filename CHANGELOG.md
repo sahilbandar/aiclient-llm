@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.2] - 2025-12-23
+## [0.2.0] - 2025-12-23 ("The Intelligence Layer")
+
+### 🚀 New Features
+
+- **Model Context Protocol (MCP)**: Connect to external tools via standard protocol.
+- **Semantic Caching**: Embedding-based response caching (requires `numpy`).
+- **Advanced Resilience**: `FallbackChain` and `LoadBalancer`.
+- **Short-Circuiting**: Middleware can now return responses directly (critical for cache).
+
+### ⚡ Improvements
+
+- Added `mcp` and `numpy` dependencies.
+- Updated `Agent` to accept `mcp_servers` configuration.
 
 ### 🚀 New Features
 

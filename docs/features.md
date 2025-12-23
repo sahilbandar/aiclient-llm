@@ -109,3 +109,33 @@ user = client.chat("claude-3-opus").generate(
 
 print(user.name, user.age)
 ```
+
+## Model Context Protocol (MCP) 🔌
+
+Connect to external tools (GitHub, Postgres, etc.) using the standard Model Context Protocol.
+
+### Usage
+
+```python
+from aiclient import Client, Agent
+
+client = Client()
+
+# Define MCP servers
+mcp_config = {
+    "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "./workspace"]
+    }
+}
+
+# Agent with MCP tools
+agent = Agent(
+    model=client.chat("gpt-4o"),
+    mcp_servers=mcp_config
+)
+
+# Agent can now use file system tools!
+result = agent.run("List files in the current directory")
+print(result)
+```

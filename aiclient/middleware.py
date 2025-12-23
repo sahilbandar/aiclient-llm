@@ -2,10 +2,11 @@ from typing import Protocol, Union, List, Any
 from .types import BaseMessage, ModelResponse, Usage
 
 class Middleware(Protocol):
-    def before_request(self, model: str, prompt: Union[str, List[BaseMessage]]) -> Union[str, List[BaseMessage]]:
+    def before_request(self, model: str, prompt: Union[str, List[BaseMessage]]) -> Union[str, List[BaseMessage], ModelResponse]:
         """
         Intercept and modify the request before it is sent to the provider.
         Returns the modified prompt (or messages).
+        If a ModelResponse is returned, the provider call is skipped and this response is returned immediately (short-circuit).
         """
         ...
 

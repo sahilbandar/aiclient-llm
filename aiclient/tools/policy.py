@@ -10,7 +10,7 @@ def check_policy(text: str) -> bool:
 
 policy_tool = Tool(
     name="check_policy",
-    func=check_policy,
-    args_schema=PolicyCheckSchema,
+    fn=check_policy,
+    schema=PolicyCheckSchema,
     description="Checks if the text complies with content policy."
 )

@@ -114,6 +114,26 @@ Integrates with OpenTelemetry for distributed tracing (Datadog, Honeycomb, Jaege
 
 ```python
 from aiclient import OpenTelemetryMiddleware
-
 client.add_middleware(OpenTelemetryMiddleware(service_name="my-ai-service"))
+```
+
+### SemanticCacheMiddleware 🧠
+
+Cache responses based on semantic similarity (embeddings) rather than exact text matching. Requires `numpy`.
+
+```python
+from aiclient.cache import SemanticCacheMiddleware
+from typing import List
+
+# 1. Define an embedding provider
+class SimpleEmbedder:
+    def embed(self, text: str) -> List[float]:
+        # Connect to OpenAI/Cohere/HuggingFace embeddings API
+        return [0.1, 0.2, ...] 
+
+# 2. Add middleware
+client.add_middleware(SemanticCacheMiddleware(
+    embedder=SimpleEmbedder(),
+    threshold=0.9
+))
 ```

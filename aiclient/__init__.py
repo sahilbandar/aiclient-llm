@@ -8,8 +8,9 @@ from .types import (
 )
 
 from .middleware import Middleware, CostTrackingMiddleware
-from .resilience import CircuitBreaker, RateLimiter
+from .resilience import CircuitBreaker, RateLimiter, FallbackChain, LoadBalancer
 from .observability import TracingMiddleware, OpenTelemetryMiddleware
+from .cache import SemanticCacheMiddleware
 
 __all__ = [
     "Client",
@@ -28,6 +29,9 @@ __all__ = [
     "CostTrackingMiddleware",
     "CircuitBreaker",
     "RateLimiter",
+    "FallbackChain",
+    "LoadBalancer",
     "TracingMiddleware",
     "OpenTelemetryMiddleware",
+    "SemanticCacheMiddleware",
 ]

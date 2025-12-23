@@ -40,8 +40,13 @@ class ChatModel:
             messages = [UserMessage(content=prompt)]
         
         # 2. Middleware Hook: before_request
+        # 2. Middleware Hook: before_request
         for mw in self.middlewares:
-            messages = mw.before_request(self.model_name, messages)
+            result = mw.before_request(self.model_name, messages)
+            if isinstance(result, ModelResponse):
+                # Short-circuit: return cached/mocked response immediately
+                return result
+            messages = result
 
         # 3. Handling Structured Output
         response_schema = None
@@ -123,8 +128,12 @@ class ChatModel:
             messages = [UserMessage(content=prompt)]
         
         # 2. Middleware Hook: before_request
+        # 2. Middleware Hook: before_request
         for mw in self.middlewares:
-            messages = mw.before_request(self.model_name, messages)
+            result = mw.before_request(self.model_name, messages)
+            if isinstance(result, ModelResponse):
+                return result
+            messages = result
 
         # 3. Handling Structured Output
         response_schema = None

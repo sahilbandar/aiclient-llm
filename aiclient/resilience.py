@@ -76,3 +76,56 @@ class RateLimiter(Middleware):
 
     def on_error(self, error: Exception, model: str) -> None:
         pass
+
+class FallbackChain:
+    """
+    Executes a prompt across a list of models, falling back to the next on failure.
+    """
+    def __init__(self, client, models: List[str]):
+        self.client = client
+        self.models = models
+
+    def generate(self, prompt: Union[str, List[BaseMessage]], **kwargs) -> ModelResponse:
+        last_exception = None
+        for model in self.models:
+            try:
+                return self.client.chat(model).generate(prompt, **kwargs)
+            except Exception as e:
+                last_exception = e
+                # Continue to next model
+                continue
+        raise last_exception or Exception("All fallback models failed")
+
+    async def generate_async(self, prompt: Union[str, List[BaseMessage]], **kwargs) -> ModelResponse:
+        last_exception = None
+        for model in self.models:
+            try:
+                return await self.client.chat(model).generate_async(prompt, **kwargs)
+            except Exception as e:
+                last_exception = e
+                continue
+        raise last_exception or Exception("All fallback models failed")
+
+class LoadBalancer:
+    """
+    Distributes requests across multiple models/endpoints using Round Robin.
+    """
+    def __init__(self, client, models: List[str]):
+        self.client = client
+        self.models = models
+        self._index = 0
+        self._lock = threading.Lock()
+
+    def _get_next_model(self) -> str:
+        with self._lock:
+            model = self.models[self._index]
+            self._index = (self._index + 1) % len(self.models)
+            return model
+
+    def generate(self, prompt: Union[str, List[BaseMessage]], **kwargs) -> ModelResponse:
+        model = self._get_next_model()
+        return self.client.chat(model).generate(prompt, **kwargs)
+
+    async def generate_async(self, prompt: Union[str, List[BaseMessage]], **kwargs) -> ModelResponse:
+        model = self._get_next_model()
+        return await self.client.chat(model).generate_async(prompt, **kwargs)

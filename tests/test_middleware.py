@@ -2,7 +2,26 @@ import pytest
 from aiclient import Client
 from aiclient.middleware import Middleware
 from aiclient.types import UserMessage, ModelResponse, Usage
-from tests.test_client import MockTransport # Reuse mock transport logic
+# Mocking infrastructure
+class MockResponse:
+    def __init__(self, data):
+        self._data = data
+        self.status_code = 200
+        
+    def json(self):
+        return self._data
+    
+    def raise_for_status(self):
+        pass
+
+class MockTransport:
+    def __init__(self, response_data=None, **kwargs):
+        self.response_data = response_data or {}
+        self.sent_data = []
+
+    def send(self, endpoint, data):
+        self.sent_data.append((endpoint, data, None))
+        return self.response_data
 
 class SuffixMiddleware:
     def before_request(self, model, prompt):
@@ -13,6 +32,9 @@ class SuffixMiddleware:
 
     def after_response(self, response):
         return response
+        
+    def on_error(self, error, model):
+        pass
 
 def test_middleware_modifies_request():
     # Setup Client
