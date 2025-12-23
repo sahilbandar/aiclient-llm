@@ -14,15 +14,16 @@ Supports **OpenAI**, **Anthropic** (Claude 3), **Google** (Gemini), and **xAI** 
 - [**Getting Started**](docs/getting_started.md): Installation, Configuration, Basic Usage.
 - [**Features Guide**](docs/features.md): Agents, Multimodal, Local LLMs (Ollama), Structured Output.
 - [**Middleware**](docs/middleware.md): Cost tracking, logging, and custom middleware.
+- [**Examples**](examples/): Runnable demo scripts for new features.
 
 ## Key Features
 
 - 🦄 **Unified Interface**: Swap between OpenAI, Anthropic, Google, xAI, and Ollama seamlessly.
 - ⚡ **Async & Sync**: Native asyncio support for high-performance apps.
-- 🚀 **Prompt Caching**: Native support for Anthropic Prompt Caching headers (v0.4).
-- 🏗️ **Structured Outputs**: Native strict JSON Schema support for OpenAI (v0.4).
-- 🛡️ **Resilient**: Circuit Breakers, Rate Limiters, and automatic retries (v0.4).
-- 🔭 **Observability**: Tracing and OpenTelemetry hooks (v0.4).
+- 🚀 **Prompt Caching**: Native support for Anthropic Prompt Caching headers (v0.1.2).
+- 🏗️ **Structured Outputs**: Native strict JSON Schema support for OpenAI (v0.1.2).
+- 🛡️ **Resilient**: Circuit Breakers, Rate Limiters, and automatic retries (v0.1.2).
+- 🔭 **Observability**: Tracing and OpenTelemetry hooks (v0.1.2).
 - 🤖 **Agent Primitives**: Built-in ReAct loop for tool-using agents.
 - 📊 **Middleware**: Inspect requests, track costs, or log data.
 
