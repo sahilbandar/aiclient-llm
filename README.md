@@ -1,6 +1,6 @@
 # aiclient-llm
 
-![AIClient Banner](assets/aiclient_banner.png)
+![AIClient Banner](assets/aiclient_banner.jpeg)
 
 [![PyPI version](https://img.shields.io/pypi/v/aiclient-llm.svg)](https://pypi.org/project/aiclient-llm/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/aiclient-llm.svg)](https://pypi.org/project/aiclient-llm/)
