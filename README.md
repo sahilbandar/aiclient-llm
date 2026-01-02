@@ -13,15 +13,14 @@ Supports **OpenAI**, **Anthropic** (Claude 3), **Google** (Gemini), and **xAI** 
 
 
 
-## Documentation
+## Documentation 📚
 
-- [**Getting Started**](https://github.com/rarenicks/aiclient/blob/main/docs/getting_started.md): Installation, Configuration, Basic Usage.
-- [**Features Guide**](https://github.com/rarenicks/aiclient/blob/main/docs/features.md): Agents, Multimodal, Local LLMs (Ollama), Structured Output.
-- [**Middleware**](https://github.com/rarenicks/aiclient/blob/main/docs/middleware.md): Cost tracking, logging, resilience, and custom middleware.
-- [**Memory**](https://github.com/rarenicks/aiclient/blob/main/docs/memory.md): Conversation history management and persistence.
-- [**Testing**](https://github.com/rarenicks/aiclient/blob/main/docs/testing.md): Mock providers and testing utilities.
-- [**Error Handling**](https://github.com/rarenicks/aiclient/blob/main/docs/errors.md): Exception types and debugging.
-- [**Examples**](https://github.com/rarenicks/aiclient/blob/main/examples/): Runnable demo scripts for new features.
+- [**Getting Started**](https://github.com/rarenicks/aiclient/blob/main/docs/getting_started.md)
+- [**Agents & MCP**](https://github.com/rarenicks/aiclient/blob/main/docs/agents.md) 🤖
+- [**Resilience**](https://github.com/rarenicks/aiclient/blob/main/docs/resilience.md) 🛡️
+- [**Observability**](https://github.com/rarenicks/aiclient/blob/main/docs/observability.md) 🔭
+- [**Embeddings**](https://github.com/rarenicks/aiclient/blob/main/docs/embeddings.md) 🔢
+- [**Full Documentation Index**](https://github.com/rarenicks/aiclient/blob/main/docs/README.md)
 
 ## Key Features
 
@@ -268,6 +267,20 @@ def test_feature():
     assert response.text == "Mocked AI response"
 ```
 
-## License
+## Community & Support 🤝
 
-Apache-2.0
+### Contributing
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to set up the dev environment and submit PRs.
+
+- **Found a bug?** [Open an Issue](https://github.com/rarenicks/aiclient/issues/new)
+- **Have a feature request?** [Start a Discussion](https://github.com/rarenicks/aiclient/discussions)
+
+### Support the Project
+If `aiclient-llm` helps you build something cool, consider buying me a coffee or connecting on LinkedIn! ☕
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-orange.svg)](https://www.buymeacoffee.com/rarenicks)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue.svg)](https://www.linkedin.com/in/avdheshchouhan/)
+
+## License 📄
+
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
